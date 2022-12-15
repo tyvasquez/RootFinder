@@ -76,7 +76,25 @@ class RootFinder:
         return self.root
 
     def newton(self):
-        self.root = 6
+        self.a = 0
+        self.b = self.x1
+        count = 0
+        
+        if self.b <= 0:
+            raise ValueError('A must be greater than 0')
+        
+        while count <= 30:
+            self.a = self.b
+            self.b = self.b - ((self.f(self.b)) / (self.fPrime(self.b)))
+             
+            if (abs(self.a) - abs(self.b)) <= self.tolerance:
+                self.root = self.f(self.b)
+                count = 31
+            else:
+                self.root = self.f(self.b)
+                self.valListx.append(self.b)
+                self.valListy.append(self.f(self.b))
+                count += 1
         return self.root
 
     def secant(self):
