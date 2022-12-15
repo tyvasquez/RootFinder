@@ -91,7 +91,7 @@ class RootFinder:
             self.b = self.b - (((self.b - self.a) / (self.f(self.b) - self.f(self.a))) * self.f(self.b))
             self.a = c
             if (self.b - self.a) <= 0.0001:
-                count = self.maxIter + 1
+                count = 11
             else:
                 self.valListx.append(self.b)
                 self.valListy.append(self.f(self.b))
