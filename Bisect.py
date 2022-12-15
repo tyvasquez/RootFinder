@@ -143,8 +143,13 @@ class RootFinder:
         plt.text(0, 0, r'y = x^2 -3')
         plt.show()
 
+method = input(str('Please input desired method of root calculation (bisection, newton, or secant).', \n, 'Bisection will calculate the root of the function by finding a midpoint\
+                   between the two given points then iteratively separating the interval between the points and subdividing the interval where the root is.\ 
+                   The method will then narrow the gap between the positive and negative intervals until it finds the correct answer.', \n,'Newtons method works by using a single initial guess to approximate the geometry of a function through its tangent lines.\
+                   It iterates through x coordinates until it finds the root of the function.', \n, 'Secant method works by using a succession of roots of secant lines to approximate the root of the function, similar to how Newtons method uses tangent lines.', \n, 'Input yout choice here: '))
 
-r1 = RootFinder(1, 2, 'secant')
+r1 = RootFinder(1, 2, method)
+
 print(r1)
 
 
