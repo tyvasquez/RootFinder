@@ -48,7 +48,7 @@ class RootFinder:
             raise ValueError('The function value f(b) is smaller than 0 ')
         midpoint = (self.a +self.b)/2
 
-    def secant(self):
+ def secant(self):
         self.a = self.x1
         self.b = self.x2
         count = 0
@@ -66,12 +66,10 @@ class RootFinder:
             else:
                 self.valListx.append(self.b)
                 self.valListy.append(self.f(self.b))
-                count += 1
-               
+                count += 1       
         
         self.root = self.f(self.b)
         return self.root
-        
             
 
 
