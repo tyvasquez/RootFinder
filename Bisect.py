@@ -1,12 +1,10 @@
-#
 import matplotlib.pyplot as plt
 import numpy as np
 
 
 class RootFinder:
 
-
-    def __init__(self,x1,x2,method):
+    def __init__(self, x1, x2, method):
 
         self.x1 = x1
         self.x2 = x2
@@ -19,13 +17,12 @@ class RootFinder:
         self.valListx = []
         self.valListy = []
 
-
     def f(self, funcVal):
-        self.func = pow(funcVal,3) - (5*funcVal) + 1
+        self.func = pow(funcVal, 3) - (5 * funcVal) + 1
         return self.func
-    
+
     def fPrime(self, funcVal):
-        self.funcP = (3*pow(funcVal,2) - 5)
+        self.funcP = (3 * pow(funcVal, 2) - 5)
         return self.funcP
 
     def pickMethod(self):
@@ -47,16 +44,16 @@ class RootFinder:
             raise ValueError('A must be less than b')
 
         self.funcVal = self.a
-        if self.f(self.funcVal) >0:
+        if self.f(self.funcVal) > 0:
             raise ValueError('The function value f(a) is larger than 0 ')
 
         self.funcVal = self.b
-        if self.f(self.funcVal) <0:
+        if self.f(self.funcVal) < 0:
             raise ValueError('The function value f(b) is smaller than 0 ')
 
-        while midpoint != 0 or self.maxIter<30:
+        while midpoint != 0 or self.maxIter < 30:
 
-            midpoint = (self.a +self.b)/2
+            midpoint = (self.a + self.b) / 2
             self.funcVal = midpoint
 
             if self.f(self.funcVal) == 0:
@@ -71,7 +68,6 @@ class RootFinder:
                 if self.f(self.funcVal) > 0:
                     self.b = self.funcVal
 
-
             if self.a - self.b <= self.tolerance:
                 self.root = self.funcVal
                 midpoint = 0
@@ -83,14 +79,14 @@ class RootFinder:
         self.a = 0
         self.b = self.x1
         count = 0
-        
+
         if self.b <= 0:
             raise ValueError('A must be greater than 0')
-        
+
         while count <= 30:
             self.a = self.b
             self.b = self.b - ((self.f(self.b)) / (self.fPrime(self.b)))
-             
+
             if (abs(self.a) - abs(self.b)) <= self.tolerance:
                 self.root = self.f(self.b)
                 count = 31
@@ -98,6 +94,7 @@ class RootFinder:
                 self.root = self.f(self.b)
                 self.valListx.append(self.b)
                 self.valListy.append(self.f(self.b))
+                self.plot()
                 count += 1
         return self.root
 
@@ -121,27 +118,30 @@ class RootFinder:
                 self.root = self.f(self.b)
                 self.valListx.append(self.b)
                 self.valListy.append(self.f(self.b))
+                self.plot()
                 count += 1
         return self.root
-    
+
     def __str__(self):
         return f'The root is {self.pickMethod()}'
 
-    # de plot(self):
-    #     #     x= np.arange(-1.5,1.5,.01)
-    #     #     plt.figure()
-    #     #     plt.plot(x, x*np.exp(2)-3, 'r-')
-    #     #     plt.xlabel('x')
-    #     #     plt.ylabel('y')
-    #     #     plt.title('Figure 1', loc='center')
-    #     #     plt.legend(['y =x^2 +1'])
-    #     #     plt.grid()
-    #     #     plt.text(0, 0, r'$y = x^2 +1')
-    #     #     plt.show()
+    def plot(self):
+        x = np.linspace(self.x1, self.x2, 400)
+        plt.figure()
+        plt.plot(self.valListx, self.valListy, 's--m', x, pow(x, 2) - 3)
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.title('Root Finder', loc='center')
+        plt.legend(['Points', 'y =x^2 -3'])
+        plt.grid()
+        plt.text(0, 0, r'$y = x^2 -3')
+        plt.show()
 
 
-r1 = RootFinder(0,1,'secant')
+r1 = RootFinder(1, 0, 'newton')
 print(r1)
+
+
 
 
 
