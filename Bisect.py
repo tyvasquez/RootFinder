@@ -55,13 +55,16 @@ class RootFinder:
     def secant(self):
         self.a = self.x1
         self.b = self.x2
+        count = 0
+        c = 0
         
         if self.a > self.b:
             raise ValueError('A must be less than b')
         
         while count <= self.maxIter:
+            c = self.b 
             self.b = self.b - ((self.a - self.b)/(self.f(self.a) - self.f(self.b))) * self.f(self.b)
-            self.a = self.b
+            self.a = c
             if (self.f(self.b) - self.f(self.a)) <= 0.0001:
                 count = self.maxIter + 1
             else:
