@@ -92,7 +92,7 @@ class RootFinder:
             c = self.b
             self.b = (self.b) - (((self.a - self.b) / (self.f(self.a) - self.f(self.b))) * self.f(self.b))
             self.a = c
-            if (abs(self.a) - abs(self.b)) <= 0.0001:
+            if (abs(self.a) - abs(self.b)) <= self.tolerance:
                 self.root = self.f(self.b)
                 count = 31
             else:
