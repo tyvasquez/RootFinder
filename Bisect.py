@@ -16,10 +16,12 @@ class RootFinder:
         self.funcVal = 0
         self.tolerance = 0.000001
         self.func = 0
+        self.valListx = []
+        self.valListy = []
 
 
     def f(self, funcVal):
-        self.func = pow(self.funcVal,2)-3
+        self.func = funcVal*np.exp(3) - (5*funcVal) + 1
         return self.func
 
     def pickMethod(self):
