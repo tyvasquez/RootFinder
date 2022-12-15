@@ -86,7 +86,7 @@ class RootFinder:
         if self.a > self.b:
             raise ValueError('A must be less than b')
 
-        while count <= self.maxIter:
+        while count <= 10:
             c = self.b
             self.b = self.b - (((self.b - self.a) / (self.f(self.b) - self.f(self.a))) * self.f(self.b))
             self.a = c
