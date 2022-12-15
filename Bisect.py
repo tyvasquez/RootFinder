@@ -21,7 +21,7 @@ class RootFinder:
 
 
     def f(self, funcVal):
-        self.func = funcVal*np.exp(3) - (5*funcVal) + 1
+        self.func = pow(funcVal,3) - (5*funcVal) + 1
         return self.func
 
     def pickMethod(self):
@@ -88,20 +88,20 @@ class RootFinder:
         if self.a > self.b:
             raise ValueError('A must be less than b')
 
-        while count <= 10:
+        while count <= 30:
             c = self.b
-            self.b = self.b - (((self.a - self.b) / (self.f(self.a) - self.f(self.b))) * self.f(self.b))
+            self.b = (self.b) - (((self.a - self.b) / (self.f(self.a) - self.f(self.b))) * self.f(self.b))
             self.a = c
             if (abs(self.a) - abs(self.b)) <= 0.0001:
-                count = 11
+                self.root = self.f(self.b)
+                count = 31
             else:
+                self.root = self.f(self.b)
                 self.valListx.append(self.b)
                 self.valListy.append(self.f(self.b))
                 count += 1
-
-        self.root = self.f(self.b)
         return self.root
-
+    
     def __str__(self):
         return f'The root is {self.pickMethod()}'
 
