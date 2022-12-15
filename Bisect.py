@@ -84,6 +84,8 @@ class RootFinder:
             raise ValueError('A must be greater than 0')
 
         while count <= 30:
+            self.valListx.append(self.b)
+            self.valListy.append(self.f(self.b))
             self.a = self.b
             self.b = self.b - ((self.f(self.b)) / (self.fPrime(self.b)))
 
@@ -92,8 +94,6 @@ class RootFinder:
                 count = 31
             else:
                 self.root = self.f(self.b)
-                self.valListx.append(self.b)
-                self.valListy.append(self.f(self.b))
                 self.plot()
                 count += 1
         return self.root
@@ -108,6 +108,8 @@ class RootFinder:
             raise ValueError('A must be less than b')
 
         while count <= 30:
+            self.valListx.append(self.b)
+            self.valListy.append(self.f(self.b))
             c = self.b
             self.b = (self.b) - (((self.a - self.b) / (self.f(self.a) - self.f(self.b))) * self.f(self.b))
             self.a = c
@@ -116,8 +118,6 @@ class RootFinder:
                 count = 31
             else:
                 self.root = self.f(self.b)
-                self.valListx.append(self.b)
-                self.valListy.append(self.f(self.b))
                 self.plot()
                 count += 1
         return self.root
