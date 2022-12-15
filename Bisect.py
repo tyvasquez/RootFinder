@@ -23,6 +23,10 @@ class RootFinder:
     def f(self, funcVal):
         self.func = pow(funcVal,3) - (5*funcVal) + 1
         return self.func
+    
+    def fPrime(self, funcVal):
+        self.funcP = (3*pow(funcVal,2) - 5)
+        return self.funcP
 
     def pickMethod(self):
         if self.method == 'bisection':
