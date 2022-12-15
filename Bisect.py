@@ -14,6 +14,7 @@ class RootFinder:
         self.maxIter = 30
         self.root = 0
         # self.funcVal = 0
+        self.valList = []
     
     def f(self, funcVal):
         self.func = funcVal*np.exp(2) - 5
@@ -59,10 +60,13 @@ class RootFinder:
             c = self.b 
             self.b = self.b - ((self.a - self.b)/(self.f(self.a) - self.f(self.b))) * self.f(self.b)
             self.a = c
-            if (self.f(self.b) - self.f(self.a)) <= 0.0001:
+            if (self.b - self.a) <= 0.0001:
                 count = self.maxIter + 1
             else:
+                self.valListx.append(self.b)
+                self.valListy.append(self.f(self.b))
                 count += 1
+               
         
         self.root = self.f(self.b)
         return self.root
