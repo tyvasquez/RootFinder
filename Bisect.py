@@ -13,6 +13,11 @@ class RootFinder:
         self.maxIter = 30
         self.root = 0
         self.funcVal = 0
+    
+    def f(self, self.funcVal):
+        self.func = self.funcVal*np.exp(2) - 5
+        return self.func
+        
 
 
     def pickMethod(self):
@@ -40,7 +45,25 @@ class RootFinder:
             raise ValueError('The function value f(b) is smaller than 0 ')
         midpoint = (self.a +self.b)/2
 
-
+    def secant(self)
+        self.a = self.x1
+        self.b = self.x2
+        
+        if self.a > self.b:
+           raise ValueError('A must be less than b')
+        
+        while count <= self.maxIter:
+            self.b = self.b - ((self.a - self.b)/(f(self.a) - f(self.b))) * f(self.b)
+            self.a = self.b
+            if (f(self.b) - f(self.a)) <= 0.0001:
+                count = self.maxIter + 1
+            else:
+                count += 1
+        
+        self.root = f(self.b)
+        return self.root
+        
+            
 
 
 
@@ -50,9 +73,7 @@ class RootFinder:
         self.root = 6
         return self.root
 
-    def secant(self):
-        self.root = 7
-        return self.root
+  
 
     def __str__(self):
         return f'The root is {self.pickMethod()}'
