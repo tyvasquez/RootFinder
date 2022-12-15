@@ -90,9 +90,9 @@ class RootFinder:
 
         while count <= 10:
             c = self.b
-            self.b = self.b - (((self.b - self.a) / (self.f(self.b) - self.f(self.a))) * self.f(self.b))
+            self.b = self.b - (((self.a - self.b) / (self.f(self.a) - self.f(self.b))) * self.f(self.b))
             self.a = c
-            if (self.b - self.a) <= 0.0001:
+            if (abs(self.a) - abs(self.b)) <= 0.0001:
                 count = 11
             else:
                 self.valListx.append(self.b)
