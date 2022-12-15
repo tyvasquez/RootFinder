@@ -7,15 +7,16 @@ import numpy as np
 class RootFinder:
 
     def __init__(self,function,x1,x2,method):
-        self.func = self.funcVal*np.exp(2) - 5
+        self.func = 0 
         self.x1 = x1
         self.x2 = x2
         self.method = method
         self.maxIter = 30
         self.root = 0
         # self.funcVal = 0
-        self.valList = []
-    
+        self.valListx = []
+        self.valListy = []
+        
     def f(self, funcVal):
         self.func = funcVal*np.exp(2) - 5
         return self.func
